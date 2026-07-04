@@ -60,7 +60,7 @@ def persist_email_data_csv(email_data):
 def submit_form():
     if request.method == 'POST':
       email_data = request.form.to_dict()
-      send_email(email_data)
+      #send_email(email_data)
       persist_email_data_csv(email_data)
       return redirect(url_for('thanks', email_address=email_data['email']))
     else:
