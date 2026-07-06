@@ -24,6 +24,7 @@ def send_email(email_data):
     email['from'] = email_data['email']
     email['subject'] = email_data['subject']
     email.set_content(email_data['message'])
+    #adding a comment to see if this works
     with smtplib.SMTP_SSL(host='mail.paulspage.net', port=465) as smtp:
       print(f'Attempting to log in')
       smtp.login(email['to'], 'QP(*^N38')
@@ -60,7 +61,7 @@ def persist_email_data_csv(email_data):
 def submit_form():
     if request.method == 'POST':
       email_data = request.form.to_dict()
-      #send_email(email_data)
+      send_email(email_data)
       persist_email_data_csv(email_data)
       return redirect(url_for('thanks', email_address=email_data['email']))
     else:
